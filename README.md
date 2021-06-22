@@ -14,3 +14,7 @@ This was definitely one the hardest stepping stones to overcome.
 Classes-
 requirer
 and logic and planning.
+
+https://kirito714.github.io/OOP-TeamProfile/
+https://github.com/kirito714
+kirito.1986.714@gmail.com
