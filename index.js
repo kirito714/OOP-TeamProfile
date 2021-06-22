@@ -17,7 +17,7 @@
 // THEN I exit the application, and the HTML is generated
 
 //first thing was to make all directories and files for each employee ect.
-
+const pageRenderhtml = require("./src/pageRender")
 const inquirer = require("inquirer");
 
 const fs = require("fs");
@@ -112,9 +112,16 @@ function employeeMenu(){
     } else if (data.choice==="Intern"){
       addIntern();
     } else{
-      // create HTML
+     buildTeam();
     }
   })
+}
+
+const buildTeam=()=>{
+  // fs.writeFile('index.html', htmlPageContent, (err) =>
+  //     err ? console.log(err) : console.log('Successfully created index.html!')
+  //   );
+  fs.writeFileSync(`./dist/Team.html`,pageRenderhtml(Team),"UTF-8")
 }
 
 const addEngineer = () => {
@@ -178,7 +185,8 @@ const addEngineer = () => {
         answers.Engineersgithub
       );
       Team.push(engineer);
-      console.log(Team);
+     
+      return employeeMenu();
     });
 };
 
