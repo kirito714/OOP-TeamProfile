@@ -1,12 +1,13 @@
+
 const pageRenderhtml = (Team) => {
   let employees = "";
   for (let i = 0; i < Team.length; i++) {
-    if (Team[i].role === "Manager") {
+    if (Team[i].getRole() === "Manager") {
       employees += `
         <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${Team[i].name}</h2>
-                    <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${Team[i].role}</h3>
+                    <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${Team[i].getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -18,12 +19,12 @@ const pageRenderhtml = (Team) => {
             </div>
 
         `;
-    } else if (Team[i].role === "Engineer") {
+    } else if (Team[i].getRole() === "Engineer") {
       employees += `
              <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${Team[i].name}</h2>
-                    <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${Team[i].role}</h3>
+                    <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${Team[i].getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">

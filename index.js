@@ -17,7 +17,7 @@
 // THEN I exit the application, and the HTML is generated
 
 //first thing was to make all directories and files for each employee ect.
-const pageRenderhtml = require("./src/pageRender")
+const pageRenderhtml = require("./src/pageRender");
 const inquirer = require("inquirer");
 
 const fs = require("fs");
@@ -30,53 +30,53 @@ const Team = [];
 const addManager = () => {
   console.log("buildYourteam");
   inquirer
-  .prompt([
-    {
-      type: "input",
-      name: "ManagersName",
-      message: "Enter the name of your Manager",
-      validate: (answer) => {
-        if (answer === "") {
-          console.log("Please enter a name");
-          return false;
-        }
-        return true;
-      },
-    },
-    {
-      type: "number",
-      name: "Managersid",
-      message: "Enter the ID",
-      validate: (answer) => {
-        if (answer === "") {
-          console.log("Please enter a ID");
-          return false;
-        }
-        return true;
-      },
-    },
-    {
-      type: "input",
-      name: "Managersemail",
-      message: "Enter the email for you Manager",
-      validate: (answer) => {
-        let passAnswer = answer.match(/\S+@\S+\.\S+/);
-        if (passAnswer) {
+    .prompt([
+      {
+        type: "input",
+        name: "ManagersName",
+        message: "Enter the name of your Manager",
+        validate: (answer) => {
+          if (answer === "") {
+            console.log("Please enter a name");
+            return false;
+          }
           return true;
-        }
-        console.log("Please enter a email");
-        return false;
+        },
       },
-    },
-    {
-      type: "input",
-      name: "Managersofficenumber",
-      message: "Enter your managers office number.",
-      validate: (answer) => {
-        if (answer === "") {
-          console.log("Please enter Office Number");
+      {
+        type: "number",
+        name: "Managersid",
+        message: "Enter the ID",
+        validate: (answer) => {
+          if (answer === "") {
+            console.log("Please enter a ID");
+            return false;
+          }
+          return true;
+        },
+      },
+      {
+        type: "input",
+        name: "Managersemail",
+        message: "Enter the email for you Manager",
+        validate: (answer) => {
+          let passAnswer = answer.match(/\S+@\S+\.\S+/);
+          if (passAnswer) {
+            return true;
+          }
+          console.log("Please enter a email");
           return false;
-        }
+        },
+      },
+      {
+        type: "input",
+        name: "Managersofficenumber",
+        message: "Enter your managers office number.",
+        validate: (answer) => {
+          if (answer === "") {
+            console.log("Please enter Office Number");
+            return false;
+          }
           return true;
         },
       },
@@ -87,42 +87,37 @@ const addManager = () => {
         answers.Managersid,
         answers.Managersemail,
         answers.Managersofficenumber
-        );
-        Team.push(manager);
-        console.log(Team);
-        return employeeMenu();
-      });
-    };
-    addManager();
-  
+      );
+      Team.push(manager);
+      console.log(Team);
+      return employeeMenu();
+    });
+};
+addManager();
 
-
-
-function employeeMenu(){
+function employeeMenu() {
   inquirer
-  .prompt({
-    type: "list",
-    name:"choice",
-    message:"Would you like to add a new team member?",
-    choices:["Engineer","Intern","Exit"]
-  })
-  .then(function(data){
-    if(data.choice==="Engineer"){
-      addEngineer();
-    } else if (data.choice==="Intern"){
-      addIntern();
-    } else{
-     buildTeam();
-    }
-  })
+    .prompt({
+      type: "list",
+      name: "choice",
+      message: "Would you like to add a new team member?",
+      choices: ["Engineer", "Intern", "Exit"],
+    })
+    .then(function (data) {
+      if (data.choice === "Engineer") {
+        addEngineer();
+      } else if (data.choice === "Intern") {
+        addIntern();
+      } else {
+        buildTeam();
+      }
+    });
 }
-
-const buildTeam=()=>{
-  // fs.writeFile('index.html', htmlPageContent, (err) =>
-  //     err ? console.log(err) : console.log('Successfully created index.html!')
-  //   );
-  fs.writeFileSync(`./dist/Team.html`,pageRenderhtml(Team),"UTF-8")
-}
+// build Team fucntion
+const buildTeam = () => {
+  // fs.writeFileSync to wait for response before sending to pageRenderhtml
+  fs.writeFileSync(`./dist/Team.html`, pageRenderhtml(Team), "UTF-8");
+};
 
 const addEngineer = () => {
   inquirer
@@ -185,12 +180,10 @@ const addEngineer = () => {
         answers.Engineersgithub
       );
       Team.push(engineer);
-     
+
       return employeeMenu();
     });
 };
-
-
 
 const addIntern = () => {
   inquirer
@@ -253,7 +246,5 @@ const addIntern = () => {
         answers.Internsschool
       );
       Team.push(intern);
-      console.log(Team);
     });
 };
-
