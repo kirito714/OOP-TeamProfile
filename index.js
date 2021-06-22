@@ -246,5 +246,6 @@ const addIntern = () => {
         answers.Internsschool
       );
       Team.push(intern);
+      return employeeMenu();
     });
 };

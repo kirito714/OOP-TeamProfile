@@ -5,7 +5,7 @@ const pageRenderhtml = (Team) => {
     if (Team[i].getRole() === "Manager") {
       employees += `
         <div class="card employee-card">
-                <div class="card-header">
+                <div class="card-header bg-primary text-white">
                     <h2 class="card-title">${Team[i].name}</h2>
                     <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${Team[i].getRole()}</h3>
                 </div>
@@ -22,7 +22,7 @@ const pageRenderhtml = (Team) => {
     } else if (Team[i].getRole() === "Engineer") {
       employees += `
              <div class="card employee-card">
-                <div class="card-header">
+                <div class="card-header bg-primary text-white">
                     <h2 class="card-title">${Team[i].name}</h2>
                     <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${Team[i].getRole()}</h3>
                 </div>
@@ -38,7 +38,19 @@ const pageRenderhtml = (Team) => {
         `;
     } else {
       employees += `
-        
+      <div class="card employee-card">
+      <div class="card-header bg-primary text-white">
+          <h2 class="card-title">${Team[i].name}</h2>
+          <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${Team[i].getRole()}</h3>
+      </div>
+      <div class="card-body">
+          <ul class="list-group">
+              <li class="list-group-item">ID: ${Team[i].id}</li>
+              <li class="list-group-item">Email: <a href="mailto:${Team[i].email}">${Team[i].email}</a></li>
+              <li class="list-group-item">GitHub: <a href="https://github.com/${Team[i].github}" target="_blank" rel="noopener noreferrer">${Team[i].github}</a></li>
+          </ul>
+      </div>
+  </div>
         `;
     }
   }
@@ -58,7 +70,7 @@ const pageRenderhtml = (Team) => {
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 jumbotron mb-3 team-heading">
+                <div class="col-12 jumbotron mb-3 team-heading bg-primary text-white">
                     <h1 class="text-center">My Team</h1>
                 </div>
             </div>
