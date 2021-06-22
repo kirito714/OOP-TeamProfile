@@ -16,5 +16,7 @@ requirer
 and logic and planning.
 
 https://kirito714.github.io/OOP-TeamProfile/
-https://github.com/kirito714
+
+https://drive.google.com/file/d/1d-elka2G8uQ3q44xySXsU7_A21M6AWR5/view
+
 kirito.1986.714@gmail.com
